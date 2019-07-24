@@ -1,18 +1,18 @@
 cutPoints <-
-function(x,y){
+function(x,y,scalar){
     od <- order(x)    
     xo <- x[od]
     yo <- y[od]    
     depth <- 1     
     
-    gr <- function(low,upp,depth=depth){ 
+    gr <- function(low,upp,depth=depth,scalar){ 
        x <- xo[low:upp]  
        y <- yo[low:upp]  
        n <- length(y) 
        ct <- cutIndex(x,y)
        if(is.null(ct)) return (NULL) ## when cut index=NULL
        ci <- ct[1]; entropy <- ct[2]
-       ret <- mdlStop(ci,y,entropy) # MDL Stop
+       ret <- mdlStop(ci,y,entropy,scalar) # MDL Stop
        if(is.null(ret)) return(NULL)
        return(c(ci,depth+1)) 
 } 

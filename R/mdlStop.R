@@ -1,5 +1,5 @@
 mdlStop <-
-function(ci,y,entropy){
+function(ci,y,entropy,scalar){
     n <- length(y)
     es <- ent(y)
     left <- 1:ci; right <- (ci+1):n     
@@ -10,6 +10,6 @@ function(ci,y,entropy){
     k1 <- length(l1); k2 <- length(l2)
     delta <- mylog(3^k-2)-(k*es-k1*ent(y[left])-k2*ent(y[right]))
     cond <- mylog(n-1)/n+delta/n        
-    if(gain<cond) return (NULL)
+    if(gain<(cond *scalar)) return (NULL)
     return(gain)
 }

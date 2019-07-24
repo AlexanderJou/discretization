@@ -1,5 +1,5 @@
 mdlp <-
-function(data){
+function(data,scalar){
     p <- length(data[1,])-1
     y <- data[,(p+1)]
     xd <- data
