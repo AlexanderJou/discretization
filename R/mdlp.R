@@ -1,12 +1,12 @@
 mdlp <-
-function(data,scalar){
+function(data,scalar=.25){
     p <- length(data[1,])-1
     y <- data[,(p+1)]
     xd <- data
     cutp <- list()
     for (i in 1:p){
         x <- data[,i]
-        cuts1 <- cutPoints(x,y)
+        cuts1 <- cutPoints(x,y,scalar)
         cuts <- c(min(x),cuts1,max(x))
         cutp[[i]] <- cuts1
         if(length(cutp[[i]])==0)cutp[[i]] <- "All"
